@@ -14,7 +14,6 @@ Leading zeros (e.g. 01.02.03.04) are considered invalid
 Inputs are guaranteed to be a single string */
 
 function isValidIP(str) {
-  console.log(str)
   
   let stringArr = str.split('.');
   const hasElemStartingWith0 = stringArr.some( elem => elem.length>1 && elem.startsWith('0') );
@@ -26,20 +25,19 @@ function isValidIP(str) {
   if (hasElemStartingWith0 === true || stringArr.length !== 4 || containsAlphabets === true) {
     return false;
   } else {
-      // turn every elem of the array to a number
-
+     // turn every elem of the array to a number
     const numbersArr = stringArr.map(str => {
       return Number(str)
-    });
+  });
   
   // for each number, check if is between 1 and 255
   const isValid = (elem) => {
-    console.log(`elem is: ${elem}`)
     if (elem>=0 && elem<= 255) {
       return true;
     }
   }
   
+  // finally, if all the numbers are valid, it will return true or false
   return numbersArr.every( isValid )
 
   }
